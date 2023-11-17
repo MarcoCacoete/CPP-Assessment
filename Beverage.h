@@ -3,5 +3,11 @@
 class Beverage :
     public Item
 {
+public:
+    double abv;
+    double volume;
+
+
+private:
 };
 

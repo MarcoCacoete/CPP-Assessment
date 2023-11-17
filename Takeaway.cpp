@@ -27,6 +27,7 @@ using namespace std;
 
 int main()
 {
+	
 	string userCommand;
 	vector <string> parameters;
 
@@ -83,5 +84,5 @@ int main()
 
 	cout << "Press any key to quit...";
 	std::getchar();
-
+	
 }
