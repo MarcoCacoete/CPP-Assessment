@@ -20,13 +20,12 @@ Good luck!
 #include <iostream>
 #include <vector>
 #include <cstring>
-
+#include <string>
 
 using namespace std;
 
 int main()
 {
-	
 	string userCommand;
 	vector <string> parameters;
 
@@ -35,7 +34,7 @@ int main()
 
 	// Create an order object
 	Order order = Order();
-
+	/*
 	while (userCommand != "exit")
 	{
 		getline(cin, userCommand);
@@ -83,5 +82,5 @@ int main()
 
 	cout << "Press any key to quit...";
 	std::getchar();
-	
+	*/
 }

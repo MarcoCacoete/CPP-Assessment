@@ -10,11 +10,18 @@ using namespace std;
 class Item
 {
 public:
-	string name;
-	int calories;
-	int price;
 	Item();
-
+	Item(vector <string> Lines);
+	~Item();
+	string temp;
+	string type;
+	vector<string>Temporary;
+	void ItemBuilder(vector<string>v);
+	string name = " ";
+	int calories = 0;
+	double price = 0;
+	
+	vector <string> items;
 private:
 
 };

@@ -5,6 +5,9 @@ class Order :
     public ItemList
 {
 public:
+    Order();
+    Order(const Order& obj);
+    ~Order();
    void add(Item*);
     double total;
 
