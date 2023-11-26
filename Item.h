@@ -20,7 +20,11 @@ public:
 	string name = " ";
 	int calories = 0;
 	double price = 0;
-	
+	string twoFourOne;
+	string shareable;
+	double volume=0;
+	double abv=0;
+	//virtual void toString() = 0;
 	vector <string> items;
 private:
 

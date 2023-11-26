@@ -8,9 +8,11 @@ public:
     Order();
     Order(const Order& obj);
     ~Order();
-   void add(Item*);
-    double total;
+    void toString() override;
 
+   void add(Item* obj);
+    double total;
+    vector<Item*> OrderList;
 private:
 };
 

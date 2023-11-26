@@ -4,10 +4,12 @@ class Beverage :
     public Item
 {
 public:
-    double abv;
-    double volume;
+    Beverage();
+    double volume = 0;
+    double abv = 0;
 
-
+    Beverage(string name, double price, int calories, double volume, double abv);
+    ~Beverage();
 private:
 };
 

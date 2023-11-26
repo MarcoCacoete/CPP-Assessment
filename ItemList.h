@@ -1,12 +1,14 @@
 #pragma once
-
 #include "Item.h"
+#include<vector>
 class ItemList
 {
 
 public:
 	ItemList();
-	int items;
+
+	virtual void toString()=0;
+	virtual ~ItemList();
 
 private:
 

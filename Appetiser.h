@@ -4,13 +4,11 @@ class Appetiser :
     public Item
 {
 public:
-    Appetiser() {
-
-        bool shareable;
-        bool twoForOne;
-
-    }
-
+    Appetiser();
+    Appetiser(string name,  double price, int calories, string shareable , string twoForOne);
+    string shareable;
+    string twoForOne;
+   ~Appetiser();
 private:
 };
 

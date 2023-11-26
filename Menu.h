@@ -9,11 +9,9 @@ class Menu :
 {
 public:
     Menu(string s);
-
+    void toString() override;
     void fileLoader(string s);
-
-    int toString();
-
+    
 private:
 
 };

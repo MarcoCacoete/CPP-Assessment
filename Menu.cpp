@@ -16,6 +16,13 @@ Menu::Menu(string s) {
 	string temp = s;
 	fileLoader(temp);
 }
+
+void Menu::toString()
+{
+}
+
+
+
 /// <summary>
 /// This function loads the csv file, it's a trimmed out version of the one that I used for one of the previeous assessed workshop tasks.
 /// </summary>
@@ -71,9 +78,7 @@ void Menu::fileLoader(string s) {
 	outputFile.close();
 
 
-
+	
 Item item = Item (Lines);
-
 }
 
-int Menu::toString() { return 1; };

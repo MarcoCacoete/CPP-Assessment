@@ -4,6 +4,7 @@
 Order::Order() {
 
 	cout << "I'm an empty order" << endl;
+	vector<Item*> OrderList;
 
 }
 Order::Order(const Order& obj) {
@@ -12,9 +13,17 @@ Order::Order(const Order& obj) {
 }
 Order::~Order() {
 	cout << "Destroyed " << "." << endl;
-
+	
+}
+void Order::toString()
+{
 }
 
-void Order::add(Item*) {
 
+double total = 0;
+
+
+void Order::add(Item* obj) {
+
+	OrderList.push_back(obj);
 }

@@ -16,12 +16,12 @@ Good luck!
 #include "Menu.h"
 #include "Order.h"
 #include "Item.h"
-
+#include "ItemList.h"
 #include <iostream>
 #include <vector>
 #include <cstring>
 #include <string>
-
+#include "Appetiser.h"
 using namespace std;
 
 int main()
@@ -34,53 +34,53 @@ int main()
 
 	// Create an order object
 	Order order = Order();
-	/*
-	while (userCommand != "exit")
-	{
-		getline(cin, userCommand);
-		char* cstr = new char[userCommand.length() + 1];
-		strcpy(cstr, userCommand.c_str());
+	//
+	//while (userCommand != "exit")
+	//{
+	//	getline(cin, userCommand);
+	//	char* cstr = new char[userCommand.length() + 1];
+	//	strcpy(cstr, userCommand.c_str());
 
-		char* token;
-		token = strtok(cstr, " ");
+	//	char* token;
+	//	token = strtok(cstr, " ");
 
-		while (token != NULL)
-		{
-			parameters.push_back(token);
-			token = strtok(NULL, " ");
-		}
+	//	while (token != NULL)
+	//	{
+	//		parameters.push_back(token);
+	//		token = strtok(NULL, " ");
+	//	}
 
-		string command = parameters[0];
+	//	string command = parameters[0];
 
-		if (command.compare("menu") == 0) {
-			cout << menu.toString();
-		}
-		else if (command.compare("add") == 0)
-		{
-			Item* choice; // you need to instantiate this using the menu object!
-			order.add(choice);
+	//	if (command.compare("menu") == 0) {
+	//		cout << menu.toString();
+	//	}
+	//	else if (command.compare("add") == 0)
+	//	{
+	//		Item* choice; // you need to instantiate this using the menu object!
+	//		order.add(choice);
 
-			// You may also wish to implement the ability to add multiple items at once!
-			// e.g. add 1 5 9 
-		}
-		else if (command.compare("remove") == 0)
-		{
+	//		// You may also wish to implement the ability to add multiple items at once!
+	//		// e.g. add 1 5 9 
+	//	}
+	//	else if (command.compare("remove") == 0)
+	//	{
 
-		}
-		else if (command.compare("checkout") == 0)
-		{
+	//	}
+	//	else if (command.compare("checkout") == 0)
+	//	{
 
-		}
-		else if (command.compare("help") == 0)
-		{
+	//	}
+	//	else if (command.compare("help") == 0)
+	//	{
 
-		}
+	//	}
 
-		parameters.clear();
+	//	parameters.clear();
 
-	}
+	//}
 
-	cout << "Press any key to quit...";
-	std::getchar();
-	*/
+	//cout << "Press any key to quit...";
+	//std::getchar();
+
 }
