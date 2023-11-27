@@ -7,7 +7,7 @@ class ItemList
 public:
 	ItemList();
 
-	virtual void toString()=0;
+	int virtual ToString() = 0;
 	virtual ~ItemList();
 
 private:

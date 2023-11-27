@@ -15,8 +15,9 @@ Order::~Order() {
 	cout << "Destroyed " << "." << endl;
 	
 }
-void Order::toString()
+int Order::ToString()
 {
+	return 0;
 }
 
 

@@ -8,7 +8,7 @@ public:
     Order();
     Order(const Order& obj);
     ~Order();
-    void toString() override;
+    int ToString() override;
 
    void add(Item* obj);
     double total;

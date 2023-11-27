@@ -9,6 +9,8 @@ public:
     double abv = 0;
 
     Beverage(string name, double price, int calories, double volume, double abv);
+    virtual string ToString() override;
+
     ~Beverage();
 private:
 };
