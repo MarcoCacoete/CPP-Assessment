@@ -34,27 +34,28 @@ int main()
 
 	// Create an order object
 	Order order = Order();
-	//
-	//while (userCommand != "exit")
-	//{
-	//	getline(cin, userCommand);
-	//	char* cstr = new char[userCommand.length() + 1];
-	//	strcpy(cstr, userCommand.c_str());
+	
+	while (userCommand != "exit")
+	{
+		getline(cin, userCommand);
+		char* cstr = new char[userCommand.length() + 1];
+		strcpy(cstr, userCommand.c_str());
 
-	//	char* token;
-	//	token = strtok(cstr, " ");
+		char* token;
+		token = strtok(cstr, " ");
 
-	//	while (token != NULL)
-	//	{
-	//		parameters.push_back(token);
-	//		token = strtok(NULL, " ");
-	//	}
+		while (token != NULL)
+		{
+			parameters.push_back(token);
+			token = strtok(NULL, " ");
+		}
 
-	//	string command = parameters[0];
+		string command = parameters[0];
 
-	//	if (command.compare("menu") == 0) {
-	//		cout << menu.toString();
-	//	}
+		if (command.compare("menu") == 0) {
+			cout << menu.toString();
+		}
+	}
 	//	else if (command.compare("add") == 0)
 	//	{
 	//		Item* choice; // you need to instantiate this using the menu object!
@@ -81,6 +82,6 @@ int main()
 	//}
 
 	//cout << "Press any key to quit...";
-	//std::getchar();
+	//getchar();
 
 }

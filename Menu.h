@@ -1,19 +1,16 @@
 #pragma once
 #include "ItemList.h"
-#include <vector>
-
-using namespace std;
-
+#include<vector>
 class Menu :
     public ItemList
 {
 public:
-    Menu(string s);
-    int ToString() override;
-    vector<string> Lines;
-
+    Menu();
+    string toString() override;
     void fileLoader(string s, vector<string>& Lines);
     void MenuBuilder(vector<string> v);
+    Menu(string s);
+    vector<string> Lines;
     string name = " ";
     int calories = 0;
     double price = 0;
@@ -23,7 +20,5 @@ public:
     double abv = 0;
     string temp;
     string type;
-private:
-
 };
 

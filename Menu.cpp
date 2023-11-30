@@ -8,24 +8,31 @@
 #include <fstream>
 #include <vector>
 #include <regex>
-using namespace std;
+#include<sstream>
+using namespace std; 
 
-/// <summary>
-/// Menu Class constructor
-/// </summary>
-/// <param name="s"></param>
+Menu::Menu() {}
+
 Menu::Menu(string s) {
 
 	cout << "I am a menu" << endl;
 	string temp = s;
-	fileLoader(temp,Lines);
+	fileLoader(temp, Lines);
 	MenuBuilder(Lines);
 }
-
-int Menu::ToString()
+string Menu::toString()
 {
-	return 0;
-}
+	string menu = "\033[34m------------------------------------Menu------------------------------------\033[0m\n";
+	int iterator = 1;
+
+	for (Item* item : items) {
+		string ite = to_string(iterator);
+		menu += ite+" - " + item->toString() + "\n";
+		iterator++;
+	}
+
+	return menu;
+};
 
 /// <summary>
 /// This function loads the csv file, it's a trimmed out version of the one that I used for one of the previeous assessed workshop tasks.
@@ -50,6 +57,7 @@ void Menu::fileLoader(string s, vector<string>& Lines) {
 		regex multiCommas("(,)+");
 		string processedText = regex_replace(line, multiCommas, ",");
 		line = processedText;
+		
 
 		// Split the line by commas and store the tokens in a temporary vector
 		vector<string> tokens;
@@ -67,20 +75,19 @@ void Menu::fileLoader(string s, vector<string>& Lines) {
 	Lines = temporary; // Update the Lines vector with the split lines
 	//for (string s : Lines)cout << s << endl;
 
-	std::ofstream outputFile("myData.txt");
-	
+	ofstream outputFile("myData.txt");
+
 	if (outputFile.is_open()) {
-	 //File is open, proceed with writing
+		//File is open, proceed with writing
 	}
 	else {
-	// Error handling: file could not be opened
+		// Error handling: file could not be opened
 	}
 	for (string element : Lines) {
-		outputFile << element << std::endl;
+		outputFile << element << endl;
 	}
 	outputFile.close();
 }
-vector <Item*> Items;
 
 void Menu::MenuBuilder(vector<string> v) {
 	vector<string> Temporary = v;
@@ -109,23 +116,23 @@ void Menu::MenuBuilder(vector<string> v) {
 		iterator = 6;
 		type = "Appetiser";
 		Appetiser* appetiser = new Appetiser(name, price, calories, shareable, twoFourOne);
-		Items.push_back(appetiser);
-		cout << appetiser->ToString() << endl;
+		items.push_back(appetiser);
+		//cout << appetiser->toString() << endl;
 	}
 	if (Temporary[0] == "m") {
 		iterator = 4;
 		type = "Main Course";
 		MainCourse* main = new MainCourse(name, price, calories);
-		Items.push_back(main);
-		cout << main->ToString() << endl;
+		items.push_back(main);
+		//cout << main->toString() << endl;
 
 	}
 	if (Temporary[0] == "b") {
 		iterator = 6;
 		type = "Beverage";
 		Beverage* bev = new Beverage(name, price, calories, volume, abv);
-		Items.push_back(bev);
-		cout << bev->ToString() << endl;
+		items.push_back(bev);
+		//cout << bev->toString() << endl;
 
 	}
 	while (iterator > 0) {
@@ -138,7 +145,9 @@ void Menu::MenuBuilder(vector<string> v) {
 	if (!Temporary.empty()) {
 		MenuBuilder(Temporary);
 	}
+	
 }
-		
-	
-	
+
+
+
+

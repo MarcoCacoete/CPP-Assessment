@@ -1,24 +1,17 @@
 #pragma once
-
-#include "ItemList.h"
-#include <iostream>
 #include <string>
-#include<fstream>
-#include <sstream>
-#include <vector>
+
 using namespace std;
-class Item
-{
+
+class Item {
 public:
-	Item();
-	Item(string name,double price,int calories);
-
-	~Item();
-	string name;
-	double price;
-	int calories;
-	string virtual ToString() = 0;
+    Item();
+    ~Item();
+    Item(string name, double price, int calories);
+    virtual string toString();
+    string name;
+    double price;
+    int calories;
 private:
-
+    // ... any private members
 };
-

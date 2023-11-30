@@ -1,16 +1,19 @@
 #pragma once
+#ifndef _ITEM_LIST_H_
+#define _ITEM_LIST_H_
+
+#include <string>
+#include <vector>
 #include "Item.h"
-#include<vector>
+using namespace std;
+
 class ItemList
 {
-
 public:
-	ItemList();
-
-	int virtual ToString() = 0;
-	virtual ~ItemList();
-
-private:
+    virtual string toString() = 0;
+    vector<Item*> items;
 
 };
 
+
+#endif

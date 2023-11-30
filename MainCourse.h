@@ -5,8 +5,9 @@ class MainCourse :
 {
 public:
     MainCourse();
-    MainCourse(string name, double price,int calories);
-    virtual string ToString() override;
+    string toString() override;
+
+    MainCourse(string name, double price, int calories);
 
     ~MainCourse();
 };
