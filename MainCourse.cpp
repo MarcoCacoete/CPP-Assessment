@@ -9,10 +9,11 @@ MainCourse::MainCourse() {
 
 }
 
-MainCourse::MainCourse(string name, double price, int calories) : Item(name, price, calories) {
+MainCourse::MainCourse(string type,string name, double price, int calories) : Item(type,name, price, calories) {
 	this->name = name;
 	this->price = price;
 	this->calories = calories;
+	this->type = type;
 
 }
 string MainCourse::toString() {
@@ -20,7 +21,7 @@ string MainCourse::toString() {
 	priceSS << fixed << setprecision(2) << price;
 	char pound = 156;
 	string priceString = priceSS.str();
-	return "Main Course: " + name + "Price: " + pound + priceString + ", Calories: " + to_string(calories);
+	return name + " Price: " + pound + priceString + ", Calories: " + to_string(calories);
 };
 
 MainCourse::~MainCourse()

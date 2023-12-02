@@ -14,11 +14,12 @@ Item::Item() {
 	price = 0.0;
 }
 
-Item::Item(string name, double price, int calories) {
+Item::Item(string type,string name, double price, int calories) {
 
 	this->name = name;
 	this->price = price;
 	this->calories = calories;
+	this->type = type;
 }
 
 

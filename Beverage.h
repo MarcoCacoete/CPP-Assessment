@@ -9,8 +9,9 @@ public:
 
     double volume = 0;
     double abv = 0;
-
-    Beverage(string name, double price, int calories, double volume, double abv);
+    bool alc;
+    Beverage(string type,string name, double price, int calories, double volume, double abv);
+    bool isAlcoholic(double abv);
     ~Beverage();
 private:
 };

@@ -7,7 +7,7 @@ public:
     MainCourse();
     string toString() override;
 
-    MainCourse(string name, double price, int calories);
+    MainCourse(string type,string name, double price, int calories);
 
     ~MainCourse();
 };

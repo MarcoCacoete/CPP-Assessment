@@ -5,11 +5,11 @@ class Appetiser :
 {
 public:
     Appetiser();
-    Appetiser(string name, double price, int calories, string shareable, string twoForOne);
+    Appetiser(string type,string name, double price, int calories, bool shareable, bool twoForOne);
 
     string toString() override;
     ~Appetiser();
-    string shareable;
-    string twoForOne;
+    bool shareable;
+    bool twoForOne;
 
 };

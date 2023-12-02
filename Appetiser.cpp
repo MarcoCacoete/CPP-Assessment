@@ -5,12 +5,13 @@
 #include <iomanip>
 using namespace std;
 
-Appetiser::Appetiser(string name, double price, int calories, string shareable, string twoForOne) : Item(name, price, calories) {
+Appetiser::Appetiser(string type,string name, double price, int calories, bool shareable, bool twoForOne) : Item(type,name, price, calories) {
 	this->name = name;
 	this->price = price;
 	this->calories = calories;
 	this->shareable = shareable;
 	this->twoForOne = twoForOne;
+	this->type = type;
 
 }
 Appetiser::~Appetiser()
@@ -25,7 +26,14 @@ string Appetiser::toString()
 
 	string priceString = ss.str();
 
-	return "Appetiser: " + name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories) + ", Shareable: " + shareable + ", Two for One: " + twoForOne;
+	if (shareable && twoForOne)
+		return name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories) + ", Shareable, Two For One";
+	else if (shareable)
+		return name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories) + ", Shareable";
+	else if (twoForOne)
+		return name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories) + ", Two For One";
+	else
+		return name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories);
 }
 
 

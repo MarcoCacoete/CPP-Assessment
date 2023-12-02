@@ -21,8 +21,8 @@ Good luck!
 #include <vector>
 #include <cstring>
 #include <string>
-#include "Appetiser.h"
 using namespace std;
+
 
 int main()
 {
@@ -55,33 +55,39 @@ int main()
 		if (command.compare("menu") == 0) {
 			cout << menu.toString();
 		}
+
+		else if (command.compare("add") == 0)
+		{
+			
+			order.add(order.orderList, menu.items, parameters);
+
+			//Item* choice; // you need to instantiate this using the menu object!
+			//order.add(choice);
+
+			// You may also wish to implement the ability to add multiple items at once!
+			// e.g. add 1 5 9 
+		}
+	
+		else if (command.compare("remove") == 0)
+		{
+			
+			order.remove(order.orderList, menu.items,parameters);
+			
+		}
+		else if (command.compare("checkout") == 0)
+		{
+
+		}
+		else if (command.compare("help") == 0)
+		{
+
+		}
+
+		parameters.clear();
+
 	}
-	//	else if (command.compare("add") == 0)
-	//	{
-	//		Item* choice; // you need to instantiate this using the menu object!
-	//		order.add(choice);
 
-	//		// You may also wish to implement the ability to add multiple items at once!
-	//		// e.g. add 1 5 9 
-	//	}
-	//	else if (command.compare("remove") == 0)
-	//	{
-
-	//	}
-	//	else if (command.compare("checkout") == 0)
-	//	{
-
-	//	}
-	//	else if (command.compare("help") == 0)
-	//	{
-
-	//	}
-
-	//	parameters.clear();
-
-	//}
-
-	//cout << "Press any key to quit...";
-	//getchar();
+	cout << "Press any key to quit...";
+	getchar();
 
 }

@@ -9,9 +9,12 @@
 #include <vector>
 #include <regex>
 #include<sstream>
+#include "Order.h"
 using namespace std; 
 
-Menu::Menu() {}
+Menu::Menu(Item* choice) {
+	
+}
 
 Menu::Menu(string s) {
 
@@ -22,14 +25,42 @@ Menu::Menu(string s) {
 }
 string Menu::toString()
 {
-	string menu = "\033[34m------------------------------------Menu------------------------------------\033[0m\n";
+	string menu = "\033[34m--------------------------------------Menu---------------------------------------\033[0m\n";
 	int iterator = 1;
-
+	bool a =false;
+	bool b=false;
+	bool c=false;
+	string ite;
 	for (Item* item : items) {
-		string ite = to_string(iterator);
+		if (iterator < items.size()&&items[0]->type == "a"&& a == false) {
+			menu += "\n";
+			menu+="\033[32m------------------------------------Appetiser------------------------------------\033[0m\n";
+			menu += "\n";
+			a = true;
+		}
+		if (iterator < items.size()&&items[iterator-1]->type == "m" && b == false) {
+			menu += "\n";
+			menu+="\033[32m------------------------------------Main Course----------------------------------\033[0m\n";
+			menu += "\n";
+			b = true;
+		}
+		if (iterator < items.size()&&items[iterator-1]->type == "b" && c == false) {
+			menu += "\n";
+			menu+="\033[32m------------------------------------Beverage-------------------------------------\033[0m\n";
+			menu += "\n";
+			c = true;
+		}
+
+		if (iterator < 10) {
+			 ite = "0"+to_string(iterator);
+		}
+		else {
+			 ite = to_string(iterator);
+		}
 		menu += ite+" - " + item->toString() + "\n";
-		iterator++;
+			iterator++;
 	}
+
 
 	return menu;
 };
@@ -93,13 +124,14 @@ void Menu::MenuBuilder(vector<string> v) {
 	vector<string> Temporary = v;
 	int iterator = 0;
 
+	type = Temporary[0];
 	name = Temporary[1];
 	temp = Temporary[2];
 	price = stod(temp);
 	temp = Temporary[3];
 	calories = stoi(temp);
-	shareable = Temporary[4];
-	twoFourOne = Temporary[5];
+	shareable = Temporary[4] == "y";
+	twoFourOne = Temporary[5] == "y";
 	temp = Temporary[4];
 	try {
 		volume = stod(temp);
@@ -112,25 +144,22 @@ void Menu::MenuBuilder(vector<string> v) {
 
 	char pound = 156;
 
-	if (Temporary[0] == "a") {
+	if (type == "a") {
 		iterator = 6;
-		type = "Appetiser";
-		Appetiser* appetiser = new Appetiser(name, price, calories, shareable, twoFourOne);
+		Appetiser* appetiser = new Appetiser(type,name, price, calories, shareable, twoFourOne);
 		items.push_back(appetiser);
 		//cout << appetiser->toString() << endl;
 	}
-	if (Temporary[0] == "m") {
+	if (type == "m") {
 		iterator = 4;
-		type = "Main Course";
-		MainCourse* main = new MainCourse(name, price, calories);
+		MainCourse* main = new MainCourse(type,name, price, calories);
 		items.push_back(main);
 		//cout << main->toString() << endl;
 
 	}
-	if (Temporary[0] == "b") {
+	if (type == "b") {
 		iterator = 6;
-		type = "Beverage";
-		Beverage* bev = new Beverage(name, price, calories, volume, abv);
+		Beverage* bev = new Beverage(type,name, price, calories, volume, abv);
 		items.push_back(bev);
 		//cout << bev->toString() << endl;
 
@@ -144,8 +173,7 @@ void Menu::MenuBuilder(vector<string> v) {
 	//cout << "Size: " << Items.size() << endl;
 	if (!Temporary.empty()) {
 		MenuBuilder(Temporary);
-	}
-	
+	}	
 }
 
 

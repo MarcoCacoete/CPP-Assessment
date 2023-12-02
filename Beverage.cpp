@@ -9,14 +9,19 @@ Beverage::Beverage() {
 
 }
 
-
-Beverage::Beverage(string name, double price, int calories, double volume, double abv) : Item(name, price, calories) {
+Beverage::Beverage(string type,string name, double price, int calories, double volume, double abv) : Item(type,name, price, calories) {
 	char pound = 156;
 	this->volume = volume;
 	this->abv = abv;
-
+	this->type = type;
+	this->alc = isAlcoholic(abv);
 }
-
+bool Beverage::isAlcoholic(double abv) {
+	if (abv > 0.0)
+		return true;
+	else
+		return false;
+}
 Beverage::~Beverage()
 {
 	cout << "deleted" << endl;
@@ -34,7 +39,10 @@ string Beverage::toString() {
 	stringstream abvSS;
 	abvSS << std::fixed << std::setprecision(2) << abv;
 	string abvString = abvSS.str();
+	if(alc==true)
+	return name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories) + ", Volume: " + volumeString + "ml, ABV: " + abvString + "%";
+	else
+		return name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories) + ", Volume: " + volumeString + "ml";
 
-	return "Beverage: " + name + ", Price: " + pound + priceString + ", Calories: " + to_string(calories) + ", Volume: " + volumeString + "ml, ABV: " + abvString + "%";
 }
 
