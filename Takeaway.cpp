@@ -80,6 +80,16 @@ int main()
 		}
 		else if (command.compare("help") == 0)
 		{
+			cout << "" << endl;
+			cout << "To view the menu, enter menu." << endl;
+			cout << "" << endl;
+			cout << "To add to your order, enter add followed by the numbers corresponding to the item, separated by spaces." << endl;
+			cout << "" << endl;
+			cout << "To remove items to your order, enter remove followed by the numbers corresponding to the item, separated by spaces." << endl;
+			cout <<""<<endl;
+			cout << "To go to checkout, enter checkout followed by y or n to finalize your order or cancel." << endl;
+			cout <<"" << endl;
+			cout << "To exit, press any key. " << endl;			
 
 		}
 

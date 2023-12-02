@@ -20,7 +20,6 @@ string Order::toString()
 
 void Order::add(vector<Item*>& a, vector<Item*>& b,vector<string> parameters)
 {
-
 	for (int i = 1; i < parameters.size(); i++) {
 		int itemNumber = stoi(parameters[i]);
 
