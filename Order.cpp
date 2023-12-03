@@ -7,15 +7,41 @@
 #include<sstream>
 #include <iomanip>
 #include "Appetiser.h"
+#include <fstream>
+#include <regex>
+
 using namespace std;
+
 Order::Order() {
 
+	total=0.0;
 
+	discount=0.0;
 }
 
 string Order::toString()
 {
-	return string();
+	stringstream output;
+
+	output << "" << "\n";
+
+	output << "Your order : " << endl;
+	output << "" << "\n";
+
+	for (Item* j : orderList) {
+		output << j->toString() << endl;
+		output << "" << "\n";
+
+	}
+	stringstream priceSS;
+	priceSS << fixed << setprecision(2) << total;
+	char pound = 156;
+	string total = priceSS.str();
+	output << "" << "\n";
+	output << "Here's your total: "<<pound << total << " Your savings are: " <<pound << discount << endl;
+
+	return output.str();
+
 }
 
 void Order::add(vector<Item*>& a, vector<Item*>& b,vector<string> parameters)
@@ -27,13 +53,9 @@ void Order::add(vector<Item*>& a, vector<Item*>& b,vector<string> parameters)
 
 		a.push_back(b[picked]);
 	}
-	cout << "" << "\n";
-	cout << "Your current order is: " << endl;
-
-	for (Item* i : a) {
-		cout << i->toString() << endl;
-	}
+	
 	calculateTotal(a);
+	cout << toString();
 }
 
 void Order::remove(vector<Item*>& a, vector<Item*>& b, vector<string> parameters)
@@ -54,21 +76,15 @@ void Order::remove(vector<Item*>& a, vector<Item*>& b, vector<string> parameters
 		}
 	}
 
-	cout << "" << "\n";
-
-	cout << "Your current order is: " << endl;
-	for (Item* j : a) {
-		cout << j->toString() << endl;
-	}
 	calculateTotal(a);
+	cout << toString();
 
 }
 
 double Order::calculateTotal(vector<Item*>orderList) {
-	total = 0.0;
+	double appetiserCount = 0.0;	
+	double appetiserPrice = 0.0;
 
-	int appetiserCount = 0;
-	
 	vector<Appetiser*> appetisers; 
 
 	for (Item* item : orderList) {
@@ -76,8 +92,8 @@ double Order::calculateTotal(vector<Item*>orderList) {
 			Appetiser* appetiser = dynamic_cast<Appetiser*>(item);
 			 // Add the appetiser to the vector
 			if (appetiser->twoForOne == true) {
+				appetiserPrice = appetiser->price;
 				appetisers.push_back(appetiser);
-				appetiserCount++;
 			}
 			else {
 				total += appetiser->price;
@@ -88,28 +104,46 @@ double Order::calculateTotal(vector<Item*>orderList) {
 		}
 	}
 
-	if (appetiserCount > 0) {
-		for (size_t i = 0; i < appetisers.size(); i++) {
+	if (appetisers.size() > 0) {
+		for (size_t i = 0; i < appetisers.size(); i++) 	{		
 			// Check if the index is odd (2nd, 4th, 6th, etc.)
 			if (i % 2 == 0) {
+				appetiserCount++;
 				// Add the price of the appetiser to the total
 				total += appetisers[i]->price;
 			}
 		}
 	}
-	
-	stringstream priceSS;
-	priceSS << fixed << setprecision(2) << total;
-	char pound = 156;
-	string priceString = priceSS.str();
+	discount = (appetisers.size() * appetiserPrice) - (appetiserCount * appetiserPrice);
 
-	cout << " Total: " << pound << priceString << endl;
-	return total;
-	
+	return total;	
 }
 
 
 void Order::printReceipt()
 {
+	// Open the file in binary mode and specify UTF-8 encoding
+	ofstream outputFile("Receipt.txt", ios::out | ios::binary);
 
+	if (outputFile.is_open()) {
+		outputFile << "|||||||||||||||||||||||||||| YOUR RECEIPT! |||||||||||||||||||||||||||" << endl;
+
+		string orderDetails = toString();
+
+		for (int i = 0; i < orderDetails.size(); i++) {
+			if (orderDetails[i] == 'œ') {
+				orderDetails[i] = '£';
+			}
+		}
+
+		outputFile << orderDetails;
+		cout << endl;
+		cout << "Receipt printed!" << endl;
+	}
+	else {
+		cerr << "Error: Unable to open file." << endl;
+	}
+
+	outputFile.close();
 }
+

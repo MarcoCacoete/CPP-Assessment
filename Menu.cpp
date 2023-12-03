@@ -106,18 +106,7 @@ void Menu::fileLoader(string s, vector<string>& Lines) {
 	Lines = temporary; // Update the Lines vector with the split lines
 	//for (string s : Lines)cout << s << endl;
 
-	ofstream outputFile("myData.txt");
-
-	if (outputFile.is_open()) {
-		//File is open, proceed with writing
-	}
-	else {
-		// Error handling: file could not be opened
-	}
-	for (string element : Lines) {
-		outputFile << element << endl;
-	}
-	outputFile.close();
+	
 }
 
 void Menu::MenuBuilder(vector<string> v) {

@@ -76,7 +76,7 @@ int main()
 		}
 		else if (command.compare("checkout") == 0)
 		{
-
+			order.printReceipt();
 		}
 		else if (command.compare("help") == 0)
 		{

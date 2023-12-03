@@ -21,11 +21,11 @@ public:
 
     void printReceipt();
 
-
     vector<int> picks;
     
     double total;
 
+    double discount;
 
 };
 
