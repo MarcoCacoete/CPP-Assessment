@@ -80,7 +80,7 @@ int main()
 		}
 		else if (command.compare("checkout") == 0)
 		{
-			cout << "Are you ready to place your order?" << endl;
+			cout << "Are you ready to place your order? (y/n)" << endl;
 			string yOrn;
 			cin >> yOrn;
 			if (yOrn == "y") {
