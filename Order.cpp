@@ -19,6 +19,11 @@ Order::Order() {
 	discount=0.0;
 }
 
+Order::~Order()
+{
+	
+}
+
 string Order::toString()
 {
 	stringstream output;
@@ -114,7 +119,8 @@ double Order::calculateTotal(vector<Item*>orderList) {
 			}
 		}
 	}
-	discount = (appetisers.size() * appetiserPrice) - (appetiserCount * appetiserPrice);
+
+	discount = appetiserPrice * (appetisers.size() - appetiserCount);
 
 	return total;	
 }
@@ -139,6 +145,11 @@ void Order::printReceipt()
 		outputFile << orderDetails;
 		cout << endl;
 		cout << "Receipt printed!" << endl;
+		cout << endl;
+		cout <<"Enter exit to exit followed by any key, or continue shopping. For extra help enter help!"<< endl;
+		cout << endl;		
+		orderList.clear(); // Clear the vector after deleting the elements
+
 	}
 	else {
 		cerr << "Error: Unable to open file." << endl;

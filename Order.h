@@ -6,6 +6,8 @@ class Order :
 public:
    
     Order();
+    ~Order();
+
 
     string toString();
 

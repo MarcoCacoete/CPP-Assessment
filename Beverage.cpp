@@ -13,7 +13,6 @@ Beverage::Beverage(string type,string name, double price, int calories, double v
 	char pound = 156;
 	this->volume = volume;
 	this->abv = abv;
-	this->type = type;
 	this->alc = isAlcoholic(abv);
 }
 bool Beverage::isAlcoholic(double abv) {

@@ -50,7 +50,11 @@ int main()
 			token = strtok(NULL, " ");
 		}
 
-		string command = parameters[0];
+		string command = ";";
+
+		if (!parameters.empty()) {
+			command = parameters[0];
+		}
 
 		if (command.compare("menu") == 0) {
 			cout << menu.toString();
@@ -76,7 +80,12 @@ int main()
 		}
 		else if (command.compare("checkout") == 0)
 		{
-			order.printReceipt();
+			cout << "Are you ready to place your order?" << endl;
+			string yOrn;
+			cin >> yOrn;
+			if (yOrn == "y") {
+				order.printReceipt();
+			}
 		}
 		else if (command.compare("help") == 0)
 		{
@@ -89,15 +98,14 @@ int main()
 			cout <<""<<endl;
 			cout << "To go to checkout, enter checkout followed by y or n to finalize your order or cancel." << endl;
 			cout <<"" << endl;
-			cout << "To exit, press any key. " << endl;			
+			cout << "To exit, enter exit and press any key after. " << endl;			
 
 		}
 
 		parameters.clear();
-
+		delete[] cstr;
 	}
 
 	cout << "Press any key to quit...";
-	getchar();
-
+	std::getchar();
 }

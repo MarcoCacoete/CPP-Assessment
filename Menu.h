@@ -5,9 +5,12 @@ class Menu :
     public ItemList
 {
 public:
-    Menu(Item* choice);
-    
+
+    Menu();
+
     Menu(string s);
+
+    ~Menu();
 
     string toString();
 

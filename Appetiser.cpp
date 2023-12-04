@@ -6,12 +6,8 @@
 using namespace std;
 
 Appetiser::Appetiser(string type,string name, double price, int calories, bool shareable, bool twoForOne) : Item(type,name, price, calories) {
-	this->name = name;
-	this->price = price;
-	this->calories = calories;
 	this->shareable = shareable;
 	this->twoForOne = twoForOne;
-	this->type = type;
 
 }
 Appetiser::~Appetiser()

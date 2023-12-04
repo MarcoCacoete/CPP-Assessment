@@ -12,8 +12,9 @@
 #include "Order.h"
 using namespace std; 
 
-Menu::Menu(Item* choice) {
-	
+Menu::Menu() : calories(0), shareable(false), twoFourOne(false), volume(0.0), abv(0.0), price(0.0)
+{
+	// Constructor body (if needed)
 }
 
 Menu::Menu(string s) {
@@ -22,6 +23,12 @@ Menu::Menu(string s) {
 	string temp = s;
 	fileLoader(temp, Lines);
 	MenuBuilder(Lines);
+}
+Menu::~Menu()
+{
+	for (Item* item : items) {
+		delete item;
+	}
 }
 string Menu::toString()
 {

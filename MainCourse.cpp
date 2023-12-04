@@ -10,10 +10,6 @@ MainCourse::MainCourse() {
 }
 
 MainCourse::MainCourse(string type,string name, double price, int calories) : Item(type,name, price, calories) {
-	this->name = name;
-	this->price = price;
-	this->calories = calories;
-	this->type = type;
 
 }
 string MainCourse::toString() {

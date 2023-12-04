@@ -2,19 +2,13 @@
 
 Your order : 
 
-Garlic bread, Price: £3.99, Calories: 500, Two For One
+Burger Price: £9.99, Calories: 950
 
-Garlic bread, Price: £3.99, Calories: 500, Two For One
+Burger Price: £9.99, Calories: 950
 
 Mac & cheese Price: £7.99, Calories: 850
 
-Water, Price: £1.50, Calories: 0, Volume: 330.00ml
-
-Nachos, Price: £4.99, Calories: 600, Shareable
-
-Garlic bread, Price: £3.99, Calories: 500, Two For One
-
-Buffalo wings, Price: £3.99, Calories: 450, Two For One
+Fish & chips Price: £8.99, Calories: 1000
 
 
-Here's your total: £76.87 Your savings are: £7.98
+Here's your total: £93.90 Your savings are: £0
