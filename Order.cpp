@@ -49,18 +49,14 @@ string Order::toString()
 
 }
 
-void Order::add(vector<Item*>& a, vector<Item*>& b,vector<string> parameters)
+void Order::add(Item*a)
 {
-	for (int i = 1; i < parameters.size(); i++) {
-		int itemNumber = stoi(parameters[i]);
 
-		int picked = itemNumber - 1;
-
-		a.push_back(b[picked]);
-	}
+		orderList.push_back(a);
 	
-	calculateTotal(a);
-	cout << toString();
+	
+	calculateTotal(orderList);
+	//cout << toString();
 }
 
 void Order::remove(vector<Item*>& a, vector<Item*>& b, vector<string> parameters)

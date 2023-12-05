@@ -23,12 +23,14 @@ Menu::Menu(string s) {
 	string temp = s;
 	fileLoader(temp, Lines);
 	MenuBuilder(Lines);
+
 }
 Menu::~Menu()
 {
 	for (Item* item : items) {
 		delete item;
 	}
+	
 }
 string Menu::toString()
 {
@@ -70,7 +72,7 @@ string Menu::toString()
 
 
 	return menu;
-};
+}
 
 /// <summary>
 /// This function loads the csv file, it's a trimmed out version of the one that I used for one of the previeous assessed workshop tasks.

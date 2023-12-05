@@ -63,10 +63,22 @@ int main()
 		else if (command.compare("add") == 0)
 		{
 			
-			order.add(order.orderList, menu.items, parameters);
 
-			//Item* choice; // you need to instantiate this using the menu object!
-			//order.add(choice);
+			Item* choice; // you need to instantiate this using the menu object!
+
+
+			for (int i = 1; i < parameters.size(); i++) {
+				int itemNumber = stoi(parameters[i]);
+
+				int picked = itemNumber - 1;
+
+				choice = menu.items[picked];
+
+				order.add(choice);
+			}
+
+			cout<<order.toString()<<endl;
+
 
 			// You may also wish to implement the ability to add multiple items at once!
 			// e.g. add 1 5 9 

@@ -15,7 +15,7 @@ public:
 
     vector<int>quantity;
 
-    void add(vector<Item*>& a, vector<Item*>& b,vector <string> parameters);
+    void add(Item*);
 
     void remove(vector<Item*>& a, vector<Item*>& b, vector<string> parameters);
 

@@ -9,7 +9,7 @@ string Item::toString()
 }
 
 
-Item::Item() {
+Item::Item() {	
 	calories = 0;
 	price = 0.0;
 }
