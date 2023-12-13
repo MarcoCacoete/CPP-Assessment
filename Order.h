@@ -13,18 +13,23 @@ public:
 
     vector<Item*> orderList;
 
+    vector<Item*> emptyOrder;
+
+
     vector<int>quantity;
 
     void add(Item*);
 
-    void remove(vector<Item*>& a, vector<Item*>& b, vector<string> parameters);
+    void remove(vector<Item*> items, vector<string> parameters);
 
     double calculateTotal(vector<Item*>orderList);
 
     void printReceipt();
 
+    bool inputCheck(string v, vector<Item*> t);
+
     vector<int> picks;
-    
+private:
     double total;
 
     double discount;

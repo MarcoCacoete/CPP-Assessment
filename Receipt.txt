@@ -2,15 +2,17 @@
 
 Your order : 
 
-Nachos, Price: £4.99, Calories: 600, Shareable
+Mac & cheese Price: £7.99, Calories: 850
 
-Buffalo wings, Price: £3.99, Calories: 450, Two For One
+Fish & chips Price: £8.99, Calories: 1000
+
+Water, Price: £1.50, Calories: 0, Volume: 330.00ml
+
+Coke, Price: £2.50, Calories: 140, Volume: 330.00ml
 
 Garlic bread, Price: £3.99, Calories: 500, Two For One
 
-Burger Price: £9.99, Calories: 950
-
-Mac & cheese Price: £7.99, Calories: 850
+Garlic bread, Price: £3.99, Calories: 500, Two For One
 
 
-Here's your total: £68.88 Your savings are: £3.99
+Here's your total: £24.97 Your savings are: £3.99

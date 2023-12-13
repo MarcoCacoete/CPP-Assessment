@@ -2,7 +2,7 @@
 #include "Item.h"
 class MainCourse :
     public Item
-{
+{                               // Another child class, inherits all properties from item class.
 public:
     MainCourse();
     string toString() override;
