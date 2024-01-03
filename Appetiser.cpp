@@ -12,6 +12,9 @@ Appetiser::Appetiser(string type, string name, double price, int calories, bool 
 }  
 
 Appetiser::~Appetiser() {
+
+    cout << "Appetiser terminated." << endl;
+
 }
 
 
@@ -42,7 +45,7 @@ string Appetiser::toString() {  //My toString method custom made for this child 
 
     string priceString = ss.str();   
 
-    if (shareable && twoForOne)                         //I had to use elfe ifs for tostring because some appetisers had extra attributes, this only outputs as necessary
+    if (shareable && twoForOne)                         //I had to use else ifs for tostring because some appetisers had extra attributes, this only outputs when these attributes exist.
         return getName() + ", Price: " + pound + priceString + ", Calories: " + to_string(getCalories()) + ", Shareable, Two For One";
     else if (shareable)
         return getName() + ", Price: " + pound + priceString + ", Calories: " + to_string(getCalories()) + ", Shareable";

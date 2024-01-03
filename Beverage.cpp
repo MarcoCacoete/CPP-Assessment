@@ -6,7 +6,7 @@
 Beverage::Beverage() {
     alc=false;
 }
-
+        // Once again, similar as appetiser class inherits necessary attributes.
 Beverage::Beverage(string type, string name, double price, int calories, double volume, double abv) : Item(type, name, price, calories), volume(volume), abv(abv), alc(isAlcoholic(abv)) {
 }
 
@@ -14,7 +14,7 @@ bool Beverage::isAlcoholic(double abv) {
     return abv > 0.0;                       // Returns true if alcohol abv is higher than 0, to tell toString to include it in output.
 }
 
-double Beverage::getVolume()
+double Beverage::getVolume()  // Accessors and muutators 
 {
     return volume;
 }
@@ -45,10 +45,11 @@ void Beverage::setAlc(const bool& newAlc)
 }
 
 Beverage::~Beverage() {
-    cout << "deleted" << endl;
+    cout << "Beverage terminated." << endl;
+
 }
 
-string Beverage::toString() {
+string Beverage::toString() {  // The same to string logic as in the other appetiser, explained already on comments on appetiser cpp. 
     stringstream priceSS;
     priceSS << fixed << setprecision(2) << getPrice();  
     char pound = 156;

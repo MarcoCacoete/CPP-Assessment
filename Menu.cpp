@@ -14,44 +14,48 @@
 
 using namespace std; 
 
-Menu::Menu() : calories(0), shareable(false), twoFourOne(false), volume(0.0), abv(0.0), price(0.0)
+Menu::Menu() : calories(0), shareable(false), twoFourOne(false), volume(0.0), abv(0.0), price(0.0) //Constructors and destructors.
 {
+}
+
+
+Menu::~Menu()
+{
+	cout << "Menu terminated." << endl;
+
+	for (Item* item : items) {
+		delete item;
+	}
+
 }
 
 Menu::Menu(string s) {
 
-	cout << "Welcome to GenEric's restaurant, your menu is ready." << endl;
+	cout << "Welcome to GenEric's restaurant, your menu is ready." << endl;  // Friendly messages.
 	cout << "" << endl;
 	cout << "To view the menu, enter menu." << endl;
 	cout << "" << endl;
 	cout << "To see all available options enter help. (We kindly recommend you do this now.) " << endl;
 	cout << "" << endl;
 
-	string temp = s;
-	fileLoader(temp, Lines);
-	MenuBuilder(Lines);
-	appetiser = false;
+	string temp = s;  // Variables and method calls.
+	fileLoader(temp, Lines);  // Calls filedloader, responsible for loading up csv file with menu information, and handing the data off to a vector of strings.
+	MenuBuilder(Lines);   // Menu Builder is responsible for constructing the menu.
+	appetiser = false;    // Very useful booleans helpful for tostring.
 	beverage = false;
 	mainCourse = false;
-	originalItems = items;
-}
-Menu::~Menu()
-{
-	for (Item* item : items) {
-		delete item;
-	}
-	
+	originalItems = items;  // This vector holds data for original order of menu, to reset sorting.
 }
 string Menu::toString()						// toString, to output the menu in a colourful way, uses validation for different sorts.
 {
-	string menu = "\033[34m--------------------------------------Menu---------------------------------------\033[0m\n";
+	string menu = "\033[34m--------------------------------------Menu---------------------------------------\033[0m\n";  // Visual dividers output in different colours.
 	int iterator = 1;
 	
 	string ite;
-	for (Item* item : items) {
-		if (iterator < items.size()&&items[0]->getType() == "a" && appetiser == false) {
-			menu += "\n";
-			menu+="\033[32m------------------------------------Appetiser------------------------------------\033[0m\n";
+	for (Item* item : items) {	//Similar as first one, however using booleans that flip to true if all items of a certain type have been processed.
+		if (iterator < items.size()&&items[0]->getType() == "a" && appetiser == false) { // Iterates through items gets item type and state of their boolean to know if it should output the divider.
+			menu += "\n";		
+			menu+="\033[32m------------------------------------Appetiser------------------------------------\033[0m\n"; 
 			menu += "\n";
 			appetiser = true;
 		}
@@ -69,12 +73,12 @@ string Menu::toString()						// toString, to output the menu in a colourful way,
 		}
 
 		if (iterator < 10) {
-			 ite = "0"+to_string(iterator);		// This bit inserts 0 to line up item numbers better.
+			 ite = "0"+to_string(iterator);		// This bit inserts 0 character to line up item numbers better in menu output.
 		}
 		else {
-			 ite = to_string(iterator); // This line adds iterator as a string, to items from first to last.
+			 ite = to_string(iterator); // This line adds iterator as a string, to items from first to last to number items..
 		}
-		menu += ite+" - " + item->toString() + "\n";
+		menu += ite+" - " + item->toString() + "\n";  // Hands off items to their respective to string methods.
 			iterator++;
 	}
 	return menu;
@@ -88,19 +92,19 @@ void Menu::fileLoader(string s, vector<string>& Lines) {
 
 	string filename = s;
 
-	ifstream myFile(filename);
+	ifstream myFile(filename);   // Input file stream to read data. Opens file handed over as argument.
 
 	while (getline(myFile, word)) {
 									// Add to the list of output strings
 		Lines.push_back(word);
 	}
-	myFile.close();
+	myFile.close();  // Closes file
 	string temp;
 	vector<string> temporary;
 	for (string& line : Lines) {
-		regex multiCommas("(,)+");
-		string processedText = regex_replace(line, multiCommas, ",");
-		line = processedText;
+		regex multiCommas("(,)+"); // Defines a regular expression that matches commas
+		string processedText = regex_replace(line, multiCommas, ",");  // Replaces all occurrences of one or more consecutive commas in the line with a single comma to remove unnecessary extra commas in csv
+		line = processedText;  // Saves it as a processed line.
 		
 
 									// Split the line by commas and store the tokens in a temporary vector
@@ -172,10 +176,13 @@ void Menu::MenuBuilder(vector<string> v) {
 }
 
 void Menu::sortByPriceAscending() {
-	sort(items.begin(), items.end(), [](const Item* a, const Item* b) {	 //Lambda function uses custom way to compare for sorting all items in items vector
-		return *a < *b;													// Using the overloaded < operator defined in the Item class changed to compare item prices.
+	sort(items.begin(), items.end(), [](const Item* a, const Item* b) {	 //Lambda function being used here to tell the sort function how to compare the items from algorithm library.
+		return *a < *b;													
 		});
 }
+		// The lambda functions take two pointers to Items (a and b) as its parameters. It returns the result of the expression "*a < *b".
+		// This expression uses the overloaded "<" operator from the Item class. This operator was redefined in the Item class to compare the prices of the items instead of their memory addresses.
+		// If the price of item a is less than the price of item b, the expression "*a < *b" will be true. So, during the sorting process, item a will be placed before item b.
 
 void Menu::sortByPriceDescending() {
 	sort(items.begin(), items.end(), [](const Item* a, const Item* b) {  // Same as above
@@ -184,7 +191,7 @@ void Menu::sortByPriceDescending() {
 }
 
 
-													// All gets and sets.
+													// All accessors and mutators
 string Menu::getType() const
 {
 	return type;

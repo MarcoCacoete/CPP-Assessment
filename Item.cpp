@@ -3,12 +3,9 @@
 using namespace std;
 
 
-string Item::toString()
-{
-	return string();
-}
 
-Item::Item() {	
+
+Item::Item() {	// Constructors and destructors, same for all classes.
 	calories = 0;
 	price = 0.0;
 }
@@ -22,7 +19,13 @@ Item::Item(string type,string name, double price, int calories) {
 }
 
 Item::~Item() {
-	cout << "deleted" << endl;
+	cout << "Item terminated." << endl;
+
+}
+
+string Item::toString()  //To string method.
+{
+	return string();
 }
 									// Accessors and mutators
 string Item::getName() const {

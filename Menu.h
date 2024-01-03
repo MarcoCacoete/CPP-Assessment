@@ -6,26 +6,25 @@ class Menu :
 {
 public:
 
-    Menu();
+    Menu();     //Constructors and destructors
 
     Menu(string s);
 
     ~Menu();
 
-    string toString();
+    string toString();  //  To string methods and all class methods below.
 
-    void fileLoader(string s, vector<string>& Lines);
+    void fileLoader(string s, vector<string>& Lines);  // My file loader method, loads csv files for use in program.
 
-    void MenuBuilder(vector<string> v);
+    void MenuBuilder(vector<string> v);  // Menu building method.
 
-    void sortByPriceAscending();
+    void sortByPriceAscending();  // Sorter methods as suggested in brief, change menu order by price ascending/descending.
 
     void sortByPriceDescending();
 
-    vector <Item*> originalItems;
+    vector <Item*> originalItems; // All class variables, vectors accessors and mutators.
    
-    vector <string> Lines;
-
+    vector <string> Lines; 
 
     string getType() const;
 

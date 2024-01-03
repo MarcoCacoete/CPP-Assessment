@@ -6,7 +6,7 @@
 #include <vector>
 #include "Item.h"
 using namespace std;
-                                // Very simple implementation of the abstract class as required in brief. Includes virtua functions for toString and virtual constructor. 
+                                // Very simple implementation of the abstract class as required in brief. Includes virtual functions for toString and virtual constructor. 
 class ItemList
 {
 public:
